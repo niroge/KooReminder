@@ -1,0 +1,28 @@
+{
+  "name": "com.kooreminder.erasmus",
+  "version": "1.0.0",
+  "description": "The backend of the HTTP interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niroge/KooReminder.git"
+  },
+  "keywords": [
+    "nodejs",
+    "c",
+    "gtk",
+    "raspberrypi"
+  ],
+  "author": "Nitu Robert-Georgian ~ Amodio Davide Antonio",
+  "license": " GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/niroge/KooReminder/issues"
+  },
+  "homepage": "https://github.com/niroge/KooReminder#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

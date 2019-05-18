@@ -1,0 +1,3 @@
+/home/Code/NewKooreminder/build/CMakeFiles/rebuild_cache.dir
+/home/Code/NewKooreminder/build/CMakeFiles/kooReminder.dir
+/home/Code/NewKooreminder/build/CMakeFiles/edit_cache.dir

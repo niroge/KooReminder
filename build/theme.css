@@ -1,0 +1,33 @@
+* {
+    font-family: Monospace;
+}
+
+#id_body {
+    background-color: #323232;
+}
+
+#id_labelTime {
+    background-color: #fa4848;
+    font-size: 6em;
+}
+
+#id_labelDate {
+    background-color: #3232dc;
+    font-size: 3em;
+}
+
+.barButton {
+    border-style: none;
+    border-radius: 0%;
+    font-size: 1.5em;
+    color: #fafafa;
+}
+
+#id_barSelected {
+    background-color: #3232dc;
+}
+
+#id_labelVersion {
+    background-color: #fafafa;
+    color: #0f0f0f;
+}

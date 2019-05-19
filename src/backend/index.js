@@ -1,14 +1,16 @@
-const fs         = require( "fs" )
-const bodyParser = require( "body-parser" );
-const express    = require( "express" )
-const readline   = require( "readline" )
+const fs           = require( "fs" )
+const bodyParser   = require( "body-parser" );
+const express      = require( "express" )
+const readline     = require( "readline" )
+const cookieParser = require( "cookie-parser" )
 
 const ALARMS_FILE = __dirname + "/../alarms.dat"
 const UPDATE_FILE = "/tmp/updateAlarmsKooreminder.dat"
 
 var app = express()
-app.use( bodyParser.urlencoded({ extended: false }) );
-app.use( bodyParser.json() );
+app.use( bodyParser.urlencoded({ extended: false }) )
+app.use( bodyParser.json() )
+app.use( cookieParser() )
 
 // Functions
 var CreateUpdateFile = function() {
@@ -40,7 +42,7 @@ var RemoveAlarm = function( alarmId ) {
     let lineNumber = 0;
     let buffer = ""
 
-    rl.on( 'line', function(line) {
+    rl.on( 'line', function( line ) {
         if ( lineNumber != alarmId ) {
             buffer += line + "\n"
         }
@@ -48,7 +50,7 @@ var RemoveAlarm = function( alarmId ) {
         lineNumber++
     } );
     
-    rl.on( 'close', function(line) {
+    rl.on( 'close', function( line ) {
         fs.writeFile( ALARMS_FILE, buffer, (error) => {
             if ( error ) {
                 console.log( '[ERROR] RemoveAlarm: cannot overwrite alarms file' )
@@ -61,8 +63,42 @@ var RemoveAlarm = function( alarmId ) {
 
 // Server Routing
 app.get( '/', ( request, response ) => {
-    response.send( fs.readFileSync( 'index.html', 'utf8' ) )
-    console.log( 'sent:', fs.readFileSync( 'index.html', 'utf8' ) )
+    console.log( 'Getting /' )
+    let alarmId = 0
+    
+    let rl = readline.createInterface( {
+        input: fs.createReadStream( ALARMS_FILE )
+    } );
+
+    let lineNumber = 0;
+    let buffer = ""
+
+    console.log( 'reading file' )
+    rl.on( 'line', function( line ) {
+        buffer += line + "\n"
+        newBuffer = buffer.split( " " )
+        
+        response.cookie( "alarm" + lineNumber + "_time", newBuffer[0] )
+        response.cookie( "alarm" + lineNumber + "_repeat", newBuffer[1] )
+        response.cookie( "alarm" + lineNumber + "_title", newBuffer[2] )
+        
+        lineNumber++
+    } );
+
+    rl.on( 'close', function( line ) {
+        fs.writeFile( ALARMS_FILE, buffer, (error) => {
+            if ( error ) {
+                console.log( '[ERROR] RemoveAlarm: cannot overwrite alarms file' )
+            }
+        })
+        console.log( 'Setting cookie numberOfAlarms' )
+        response.cookie( "numberOfAlarms", lineNumber )
+        
+        response.send( fs.readFileSync( 'index.html', 'utf8' ) )
+        
+        console.log( 'Sending index.html' )
+        console.log( 'sent:', fs.readFileSync( 'index.html', 'utf8' ) )
+    } );
 } )
 
 app.get( '/addAlarm', ( request, response ) => {
@@ -85,7 +121,7 @@ app.post( '/addAlarm', ( request, response ) => {
     console.log( 'alarm repeat:', request.body.repeat )
     console.log( 'alarm title:', request.body.title )
     AddAlarm( request.body.time, request.body.repeat, request.body.title )
-    response.send( {hello: 'world-added alarm!'} )
+    response.redirect( '/' )
 } )
 
 app.post( '/removeAlarm', ( request, response ) => {
@@ -94,7 +130,7 @@ app.post( '/removeAlarm', ( request, response ) => {
     console.log( 'request body:', request.body )
     console.log( 'alarm id:', request.body.alarm_id )
     RemoveAlarm( request.body.alarm_id )
-    response.send( {hello: 'world-removed alarm!'})
+    response.redirect( '/' )
 } )
 
 // Create the server

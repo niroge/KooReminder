@@ -10,6 +10,8 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "../include"
+  "../lib"
   "/usr/include/gtk-3.0"
   "/usr/include/pango-1.0"
   "/usr/include/glib-2.0"

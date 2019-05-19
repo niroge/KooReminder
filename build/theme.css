@@ -1,13 +1,10 @@
-* {
-    font-family: Monospace;
-}
-
 #id_body {
     background-color: #323232;
 }
 
 #id_labelTime {
     background-color: #fa4848;
+    font-family: Monospace;
     font-size: 6em;
 }
 

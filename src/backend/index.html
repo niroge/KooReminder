@@ -4,6 +4,20 @@
     <title> It works! </title>
   </head>
   <body>
-    It just fucking works
+    <p>    It just fucking works </p>
+    <br />
+    <h1> Add an alarm </h1>
+    <form action='/addAlarm' method="POST">
+      <input name="title" />
+      <input name="time" />
+      <input name="repeat" />
+      <input type="submit" />
+    </form>
+
+    <h1> Remove an alarm </h1>
+    <form action='/removeAlarm' method='POST'>
+      <input name='alarm_id' />
+      <input type="submit" />
+    </form>
   </body>
 </html>

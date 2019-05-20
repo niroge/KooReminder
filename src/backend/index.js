@@ -109,6 +109,16 @@ app.get( '/removeAlarm', ( request, response ) => {
     console.log( '[ERROR] called /removeAlarm with a GET request!' )
 } )
 
+app.get( '/css/style.css', ( request, response ) => {
+    console.log( 'Sending style.css...' )
+    response.send( fs.readFileSync( __dirname + '/css/style.css' ) )
+} )
+
+app.get( '/js/main.js', ( request, response ) => {
+    console.log( 'Sending main.js..' )
+    response.send( fs.readFileSync( __dirname + '/js/main.js' ) )
+} )
+
 app.get( /.*/, ( request, response) => {
     console.log( '[ERROR] invalid path requested:', request.url )
 } )

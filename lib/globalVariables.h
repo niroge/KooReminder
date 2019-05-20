@@ -18,7 +18,6 @@ const int    SCREEN_HEIGHT = 320;
 const char * ALARMS_FILE   = "alarms.dat";
 const char * THEMES_FILE   = "theme.css";
 
-
 GtkWidget * window            = NULL;
 GtkWidget * buttonClock       = NULL;
 GtkWidget * buttonAlarms      = NULL;
@@ -32,6 +31,7 @@ GtkWidget * alarmsWindow      = NULL;
 GtkWidget * selectedTopButton = NULL;
 GtkWidget * labelVersion      = NULL;
 GtkWidget * labelResetCuckoo  = NULL;
+GtkWidget * alarmsBox         = NULL;
 FILE *      alarmsFilePointer = NULL;
 int         screenId          = SCREEN_NONE;
 GtkStyleContext * contextBarSelected = NULL;

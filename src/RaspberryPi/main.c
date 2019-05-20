@@ -49,8 +49,9 @@ int main( int argc, char ** argv ) {
     gtk_window_set_default_size( GTK_WINDOW( window ), 480, 320 );
     gtk_window_set_resizable( GTK_WINDOW( window ), FALSE );
     
-    hboxTopBar = gtk_box_new( 0, 0 );
+    hboxTopBar      = gtk_box_new( 0, 0 );
     vboxPageContent = gtk_box_new( 1, 0 );
+    alarmsBox       = gtk_box_new( 1, 0 );
     
     labelTime        = gtk_label_new( "hh:mm:ss" );
     labelDate        = gtk_label_new( "dd mmm yyyy" );

@@ -59,7 +59,7 @@ void ChangeScreenAlarms( gpointer data ) {
     LoadFiles();
     g_print( "Alarms screen pack\n" );
     gtk_scrolled_window_set_policy( GTK_SCROLLED_WINDOW( alarmsWindow ),
-                                    GTK_POLICY_NEVER,
+                                    GTK_POLICY_AUTOMATIC,
                                     GTK_POLICY_AUTOMATIC );
 
     gtk_widget_show( GTK_WIDGET( alarmsWindow ) );

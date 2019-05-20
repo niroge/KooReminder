@@ -74,7 +74,10 @@ void LoadFiles( void ) {
 
     /* Then load the alarms file */
     if ( FileExists( ALARMS_FILE ) ) {
+        alarmsFilePointer = fopen( ALARMS_FILE, "rw" );
         LoadAlarms();
+    } else {
+        g_print( "Alarms file missing!\n" );
     }
 }
 
@@ -82,6 +85,7 @@ void LoadWidgets( void ) {
     const int expand = 0, fill = 1, padding = 0;
     g_print( "Loading widgets!\n" );
     gtk_container_add( GTK_CONTAINER( window ), vboxPageContent );
+    gtk_container_add( GTK_CONTAINER( alarmsWindow ), alarmsBox );
 
     gtk_box_pack_start( GTK_BOX( vboxPageContent ), hboxTopBar, expand, fill, padding );
     gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonClock, expand, fill, padding);

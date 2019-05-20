@@ -88,9 +88,9 @@ void LoadWidgets( void ) {
     gtk_container_add( GTK_CONTAINER( alarmsWindow ), alarmsBox );
 
     gtk_box_pack_start( GTK_BOX( vboxPageContent ), hboxTopBar, expand, fill, padding );
-    gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonClock, expand, fill, padding);
-    gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonAlarms, expand, fill, padding);
-    gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonSettings, expand, fill, padding);
+    gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonClock, true, true, false );
+    gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonAlarms, true, true, false );
+    gtk_box_pack_start( GTK_BOX( hboxTopBar ), buttonSettings, true, true, false );
 
     gtk_box_pack_start( GTK_BOX( vboxPageContent ), alarmsWindow, true, true, false );
     gtk_box_pack_start( GTK_BOX( vboxPageContent ), labelTime, true, true, true );

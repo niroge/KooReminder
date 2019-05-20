@@ -23,7 +23,7 @@ void ApplyCSSNaming( void ) {
 }
 
 void SetDateAndTime( void ) {
-    const char * weekDays[]   = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+    const char * weekDays[]   = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
     const char * monthNames[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
     
     char tmpBufferTime[9];
